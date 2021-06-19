@@ -1,2 +1,3 @@
 credentials.tf
 .terraform
+.correcion-vars.tf.swp
