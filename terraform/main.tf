@@ -19,8 +19,8 @@ resource "azurerm_resource_group" "rg" {
 }
 
 #Creo un storage account apuntando al grupo de recursos y su location
-resource "azurerm_storage_account" "staccount" {
-    name                     = "staccountcp2" 
+resource "azurerm_storage_account" "unir-victor-storage-account" {
+    name                     = "unir-victor-storage-account" 
     resource_group_name      = azurerm_resource_group.rg.name
     location                 = azurerm_resource_group.rg.location
     account_tier             = "Standard"
