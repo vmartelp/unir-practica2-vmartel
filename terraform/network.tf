@@ -10,8 +10,7 @@ resource "azurerm_virtual_network" "mired" {
     }
 }
 
-#Definimos una subred - test
-
+#Definimos una subred
 resource "azurerm_subnet" "misubnet" {
     name                   = "practica2subnet"
     resource_group_name    = azurerm_resource_group.rg.name
@@ -20,9 +19,9 @@ resource "azurerm_subnet" "misubnet" {
 
 }
 
-#Creamos network interface card con ip estática
-resource "azurerm_network_interface" "minic1" {
-  name                = "vmnic1"  
+#Creamos network interface card con ip estática para el master
+resource "azurerm_network_interface" "nicmaster" {
+  name                = "nicmaster"  
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -31,7 +30,7 @@ resource "azurerm_network_interface" "minic1" {
     subnet_id                      = azurerm_subnet.misubnet.id 
     private_ip_address_allocation  = "Static"
     private_ip_address             = "10.0.1.10"
-    public_ip_address_id           = azurerm_public_ip.mipublicip1.id
+    public_ip_address_id           = azurerm_public_ip.ippublicamaster.id
   }
 
     tags = {
@@ -42,10 +41,10 @@ resource "azurerm_network_interface" "minic1" {
 
 
 
-#Creamos una IP publica para poder acceder desde fuera de azure
+#Creamos una IP publica para el Master
 
-resource "azurerm_public_ip" "mipublicip1" {
-  name                = "vmip1"
+resource "azurerm_public_ip" "ippublicamaster" {
+  name                = "ippublicamaster"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Dynamic"
