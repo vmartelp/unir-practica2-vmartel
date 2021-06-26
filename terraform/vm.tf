@@ -32,7 +32,7 @@ resource "azurerm_linux_virtual_machine" "kubernetes-master" {
     }
 
     boot_diagnostics {
-        storage_account_uri = azurerm_storage_account.staccount.primary_blob_endpoint
+        storage_account_uri = azurerm_storage_account.unirvictorstorageaccount.primary_blob_endpoint
     }
 
     tags = {
