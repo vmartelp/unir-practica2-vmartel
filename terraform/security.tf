@@ -22,10 +22,10 @@ resource "azurerm_network_security_group" "misecgroup" {
     }
 }
 
-# Vinculamos el security group al interface de red
+# Vinculamos el security group al interface de red del Master
 
 resource "azurerm_network_interface_security_group_association" "mySecGroupAssociation1" {
-    network_interface_id      = azurerm_network_interface.minic1.id
+    network_interface_id      = azurerm_network_interface.nicmaster.id
     network_security_group_id = azurerm_network_security_group.misecgroup.id
 
 }
