@@ -28,7 +28,7 @@ resource "azurerm_network_interface" "nicmaster" {
   resource_group_name = azurerm_resource_group.rg.name
 
     ip_configuration {
-    name                           = "myipconfiguration1"
+    name                           = "masteripconfiguration"
     subnet_id                      = azurerm_subnet.misubnet.id 
     private_ip_address_allocation  = "Static"
     private_ip_address             = "10.0.1.10"
@@ -64,7 +64,7 @@ resource "azurerm_network_interface" "nicnfs" {
   resource_group_name = azurerm_resource_group.rg.name
 
     ip_configuration {
-    name                           = "myipconfiguration1"
+    name                           = "nfsipconfiguration"
     subnet_id                      = azurerm_subnet.misubnet.id 
     private_ip_address_allocation  = "Static"
     private_ip_address             = "10.0.1.11"
@@ -100,7 +100,7 @@ resource "azurerm_network_interface" "nicworker" {
   resource_group_name = azurerm_resource_group.rg.name
 
     ip_configuration {
-    name                           = "myipconfiguration1"
+    name                           = "workeripconfiguration"
     subnet_id                      = azurerm_subnet.misubnet.id 
     private_ip_address_allocation  = "Static"
     private_ip_address             = "10.0.1.12"
