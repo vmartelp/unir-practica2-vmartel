@@ -1,0 +1,600 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[1m  # azurerm_linux_virtual_machine.kubernetes-NFS[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_linux_virtual_machine" "kubernetes-NFS" {
+      [32m+[0m [0m[1m[0madmin_username[0m[0m                  = "adminUsername"
+      [32m+[0m [0m[1m[0mallow_extension_operations[0m[0m      = true
+      [32m+[0m [0m[1m[0mcomputer_name[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mdisable_password_authentication[0m[0m = true
+      [32m+[0m [0m[1m[0mextensions_time_budget[0m[0m          = "PT1H30M"
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                        = "westeurope"
+      [32m+[0m [0m[1m[0mmax_bid_price[0m[0m                   = -1
+      [32m+[0m [0m[1m[0mname[0m[0m                            = "kubernetes-NFS"
+      [32m+[0m [0m[1m[0mnetwork_interface_ids[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mpriority[0m[0m                        = "Regular"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprovision_vm_agent[0m[0m              = true
+      [32m+[0m [0m[1m[0mpublic_ip_address[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip_addresses[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m             = "practica2_rg"
+      [32m+[0m [0m[1m[0msize[0m[0m                            = "Standard_D1_v2"
+      [32m+[0m [0m[1m[0mtags[0m[0m                            = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mzone[0m[0m                            = (known after apply)
+
+      [32m+[0m [0madmin_ssh_key {
+          [32m+[0m [0m[1m[0mpublic_key[0m[0m = <<-EOT
+                ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDn36KdiyEmM6823c77BeWIkW5Nuyaw3KXv3ewasp1/Ez78JmedfqYlzVhwRb+Kra5ZQm3g9tyI+C2KSRSQwtdBROoKhQ0Q8PG2ydjzW/5DjPJOT6YFk3X9X3PRyKl+FvXyezwCxbor2JcK7s+Z9NeoG0NFuSVye+AIKu5rcD3fx0IZPjCMVp6dBEyJOdjZBiehGQvS5JlaM+qhjvn0a1w5yKVxpKQvPpp7gh4k6vYFycppd8FCaiCgnS3b8DKnPwwblykuKE3BSzzdrUXQJhGPYfg7riXy1ZM1BtEyu3BKpNjv9B4ZtFKfI/M1WMJTbTQ5ApZvYQvP3v+SpFmz5Vqf victor@cc-2c1289d6-57bf454c46-n4rt7
+            EOT
+          [32m+[0m [0m[1m[0musername[0m[0m   = "adminUsername"
+        }
+
+      [32m+[0m [0mboot_diagnostics {
+          [32m+[0m [0m[1m[0mstorage_account_uri[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mos_disk {
+          [32m+[0m [0m[1m[0mcaching[0m[0m                   = "ReadWrite"
+          [32m+[0m [0m[1m[0mdisk_size_gb[0m[0m              = (known after apply)
+          [32m+[0m [0m[1m[0mname[0m[0m                      = (known after apply)
+          [32m+[0m [0m[1m[0mstorage_account_type[0m[0m      = "Standard_LRS"
+          [32m+[0m [0m[1m[0mwrite_accelerator_enabled[0m[0m = false
+        }
+
+      [32m+[0m [0mplan {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mproduct[0m[0m   = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mpublisher[0m[0m = "cognosys"
+        }
+
+      [32m+[0m [0msource_image_reference {
+          [32m+[0m [0m[1m[0moffer[0m[0m     = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mpublisher[0m[0m = "cognosys"
+          [32m+[0m [0m[1m[0msku[0m[0m       = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mversion[0m[0m   = "1.2019.0810"
+        }
+    }
+
+[1m  # azurerm_linux_virtual_machine.kubernetes-master[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_linux_virtual_machine" "kubernetes-master" {
+      [32m+[0m [0m[1m[0madmin_username[0m[0m                  = "adminUsername"
+      [32m+[0m [0m[1m[0mallow_extension_operations[0m[0m      = true
+      [32m+[0m [0m[1m[0mcomputer_name[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mdisable_password_authentication[0m[0m = true
+      [32m+[0m [0m[1m[0mextensions_time_budget[0m[0m          = "PT1H30M"
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                        = "westeurope"
+      [32m+[0m [0m[1m[0mmax_bid_price[0m[0m                   = -1
+      [32m+[0m [0m[1m[0mname[0m[0m                            = "kubernetes-master"
+      [32m+[0m [0m[1m[0mnetwork_interface_ids[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mpriority[0m[0m                        = "Regular"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprovision_vm_agent[0m[0m              = true
+      [32m+[0m [0m[1m[0mpublic_ip_address[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip_addresses[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m             = "practica2_rg"
+      [32m+[0m [0m[1m[0msize[0m[0m                            = "Standard_D1_v2"
+      [32m+[0m [0m[1m[0mtags[0m[0m                            = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mzone[0m[0m                            = (known after apply)
+
+      [32m+[0m [0madmin_ssh_key {
+          [32m+[0m [0m[1m[0mpublic_key[0m[0m = <<-EOT
+                ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDn36KdiyEmM6823c77BeWIkW5Nuyaw3KXv3ewasp1/Ez78JmedfqYlzVhwRb+Kra5ZQm3g9tyI+C2KSRSQwtdBROoKhQ0Q8PG2ydjzW/5DjPJOT6YFk3X9X3PRyKl+FvXyezwCxbor2JcK7s+Z9NeoG0NFuSVye+AIKu5rcD3fx0IZPjCMVp6dBEyJOdjZBiehGQvS5JlaM+qhjvn0a1w5yKVxpKQvPpp7gh4k6vYFycppd8FCaiCgnS3b8DKnPwwblykuKE3BSzzdrUXQJhGPYfg7riXy1ZM1BtEyu3BKpNjv9B4ZtFKfI/M1WMJTbTQ5ApZvYQvP3v+SpFmz5Vqf victor@cc-2c1289d6-57bf454c46-n4rt7
+            EOT
+          [32m+[0m [0m[1m[0musername[0m[0m   = "adminUsername"
+        }
+
+      [32m+[0m [0mboot_diagnostics {
+          [32m+[0m [0m[1m[0mstorage_account_uri[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mos_disk {
+          [32m+[0m [0m[1m[0mcaching[0m[0m                   = "ReadWrite"
+          [32m+[0m [0m[1m[0mdisk_size_gb[0m[0m              = (known after apply)
+          [32m+[0m [0m[1m[0mname[0m[0m                      = (known after apply)
+          [32m+[0m [0m[1m[0mstorage_account_type[0m[0m      = "Standard_LRS"
+          [32m+[0m [0m[1m[0mwrite_accelerator_enabled[0m[0m = false
+        }
+
+      [32m+[0m [0mplan {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mproduct[0m[0m   = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mpublisher[0m[0m = "cognosys"
+        }
+
+      [32m+[0m [0msource_image_reference {
+          [32m+[0m [0m[1m[0moffer[0m[0m     = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mpublisher[0m[0m = "cognosys"
+          [32m+[0m [0m[1m[0msku[0m[0m       = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mversion[0m[0m   = "1.2019.0810"
+        }
+    }
+
+[1m  # azurerm_linux_virtual_machine.kubernetes-worker[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_linux_virtual_machine" "kubernetes-worker" {
+      [32m+[0m [0m[1m[0madmin_username[0m[0m                  = "adminUsername"
+      [32m+[0m [0m[1m[0mallow_extension_operations[0m[0m      = true
+      [32m+[0m [0m[1m[0mcomputer_name[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mdisable_password_authentication[0m[0m = true
+      [32m+[0m [0m[1m[0mextensions_time_budget[0m[0m          = "PT1H30M"
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                        = "westeurope"
+      [32m+[0m [0m[1m[0mmax_bid_price[0m[0m                   = -1
+      [32m+[0m [0m[1m[0mname[0m[0m                            = "kubernetes-worker"
+      [32m+[0m [0m[1m[0mnetwork_interface_ids[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mpriority[0m[0m                        = "Regular"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprovision_vm_agent[0m[0m              = true
+      [32m+[0m [0m[1m[0mpublic_ip_address[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip_addresses[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m             = "practica2_rg"
+      [32m+[0m [0m[1m[0msize[0m[0m                            = "Standard_D1_v2"
+      [32m+[0m [0m[1m[0mtags[0m[0m                            = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mzone[0m[0m                            = (known after apply)
+
+      [32m+[0m [0madmin_ssh_key {
+          [32m+[0m [0m[1m[0mpublic_key[0m[0m = <<-EOT
+                ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDn36KdiyEmM6823c77BeWIkW5Nuyaw3KXv3ewasp1/Ez78JmedfqYlzVhwRb+Kra5ZQm3g9tyI+C2KSRSQwtdBROoKhQ0Q8PG2ydjzW/5DjPJOT6YFk3X9X3PRyKl+FvXyezwCxbor2JcK7s+Z9NeoG0NFuSVye+AIKu5rcD3fx0IZPjCMVp6dBEyJOdjZBiehGQvS5JlaM+qhjvn0a1w5yKVxpKQvPpp7gh4k6vYFycppd8FCaiCgnS3b8DKnPwwblykuKE3BSzzdrUXQJhGPYfg7riXy1ZM1BtEyu3BKpNjv9B4ZtFKfI/M1WMJTbTQ5ApZvYQvP3v+SpFmz5Vqf victor@cc-2c1289d6-57bf454c46-n4rt7
+            EOT
+          [32m+[0m [0m[1m[0musername[0m[0m   = "adminUsername"
+        }
+
+      [32m+[0m [0mboot_diagnostics {
+          [32m+[0m [0m[1m[0mstorage_account_uri[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mos_disk {
+          [32m+[0m [0m[1m[0mcaching[0m[0m                   = "ReadWrite"
+          [32m+[0m [0m[1m[0mdisk_size_gb[0m[0m              = (known after apply)
+          [32m+[0m [0m[1m[0mname[0m[0m                      = (known after apply)
+          [32m+[0m [0m[1m[0mstorage_account_type[0m[0m      = "Standard_LRS"
+          [32m+[0m [0m[1m[0mwrite_accelerator_enabled[0m[0m = false
+        }
+
+      [32m+[0m [0mplan {
+          [32m+[0m [0m[1m[0mname[0m[0m      = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mproduct[0m[0m   = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mpublisher[0m[0m = "cognosys"
+        }
+
+      [32m+[0m [0msource_image_reference {
+          [32m+[0m [0m[1m[0moffer[0m[0m     = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mpublisher[0m[0m = "cognosys"
+          [32m+[0m [0m[1m[0msku[0m[0m       = "centos-8-stream-free"
+          [32m+[0m [0m[1m[0mversion[0m[0m   = "1.2019.0810"
+        }
+    }
+
+[1m  # azurerm_network_interface.nicmaster[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_interface" "nicmaster" {
+      [32m+[0m [0m[1m[0mapplied_dns_servers[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdns_servers[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0menable_accelerated_networking[0m[0m = false
+      [32m+[0m [0m[1m[0menable_ip_forwarding[0m[0m          = false
+      [32m+[0m [0m[1m[0mid[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0minternal_dns_name_label[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0minternal_domain_name_suffix[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                      = "westeurope"
+      [32m+[0m [0m[1m[0mmac_address[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                          = "nicmaster"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m           = "practica2_rg"
+      [32m+[0m [0m[1m[0mtags[0m[0m                          = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m            = (known after apply)
+
+      [32m+[0m [0mip_configuration {
+          [32m+[0m [0m[1m[0mname[0m[0m                          = "masteripconfiguration"
+          [32m+[0m [0m[1m[0mprimary[0m[0m                       = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m            = "10.0.1.10"
+          [32m+[0m [0m[1m[0mprivate_ip_address_allocation[0m[0m = "static"
+          [32m+[0m [0m[1m[0mprivate_ip_address_version[0m[0m    = "IPv4"
+          [32m+[0m [0m[1m[0mpublic_ip_address_id[0m[0m          = (known after apply)
+          [32m+[0m [0m[1m[0msubnet_id[0m[0m                     = (known after apply)
+        }
+    }
+
+[1m  # azurerm_network_interface.nicnfs[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_interface" "nicnfs" {
+      [32m+[0m [0m[1m[0mapplied_dns_servers[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdns_servers[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0menable_accelerated_networking[0m[0m = false
+      [32m+[0m [0m[1m[0menable_ip_forwarding[0m[0m          = false
+      [32m+[0m [0m[1m[0mid[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0minternal_dns_name_label[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0minternal_domain_name_suffix[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                      = "westeurope"
+      [32m+[0m [0m[1m[0mmac_address[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                          = "nicnfs"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m           = "practica2_rg"
+      [32m+[0m [0m[1m[0mtags[0m[0m                          = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m            = (known after apply)
+
+      [32m+[0m [0mip_configuration {
+          [32m+[0m [0m[1m[0mname[0m[0m                          = "nfsipconfiguration"
+          [32m+[0m [0m[1m[0mprimary[0m[0m                       = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m            = "10.0.1.11"
+          [32m+[0m [0m[1m[0mprivate_ip_address_allocation[0m[0m = "static"
+          [32m+[0m [0m[1m[0mprivate_ip_address_version[0m[0m    = "IPv4"
+          [32m+[0m [0m[1m[0mpublic_ip_address_id[0m[0m          = (known after apply)
+          [32m+[0m [0m[1m[0msubnet_id[0m[0m                     = (known after apply)
+        }
+    }
+
+[1m  # azurerm_network_interface.nicworker[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_interface" "nicworker" {
+      [32m+[0m [0m[1m[0mapplied_dns_servers[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdns_servers[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0menable_accelerated_networking[0m[0m = false
+      [32m+[0m [0m[1m[0menable_ip_forwarding[0m[0m          = false
+      [32m+[0m [0m[1m[0mid[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0minternal_dns_name_label[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0minternal_domain_name_suffix[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                      = "westeurope"
+      [32m+[0m [0m[1m[0mmac_address[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                          = "nicworker"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m           = "practica2_rg"
+      [32m+[0m [0m[1m[0mtags[0m[0m                          = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m            = (known after apply)
+
+      [32m+[0m [0mip_configuration {
+          [32m+[0m [0m[1m[0mname[0m[0m                          = "workeripconfiguration"
+          [32m+[0m [0m[1m[0mprimary[0m[0m                       = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m            = "10.0.1.12"
+          [32m+[0m [0m[1m[0mprivate_ip_address_allocation[0m[0m = "static"
+          [32m+[0m [0m[1m[0mprivate_ip_address_version[0m[0m    = "IPv4"
+          [32m+[0m [0m[1m[0mpublic_ip_address_id[0m[0m          = (known after apply)
+          [32m+[0m [0m[1m[0msubnet_id[0m[0m                     = (known after apply)
+        }
+    }
+
+[1m  # azurerm_network_interface_security_group_association.secgroupmaster[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_interface_security_group_association" "secgroupmaster" {
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_security_group_id[0m[0m = (known after apply)
+    }
+
+[1m  # azurerm_network_interface_security_group_association.secgroupnfs[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_interface_security_group_association" "secgroupnfs" {
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_security_group_id[0m[0m = (known after apply)
+    }
+
+[1m  # azurerm_network_interface_security_group_association.secgroupworker[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_interface_security_group_association" "secgroupworker" {
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_security_group_id[0m[0m = (known after apply)
+    }
+
+[1m  # azurerm_network_security_group.secgroupmaster[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_security_group" "secgroupmaster" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m            = "westeurope"
+      [32m+[0m [0m[1m[0mname[0m[0m                = "sshtraffic"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m = "practica2_rg"
+      [32m+[0m [0m[1m[0msecurity_rule[0m[0m       = [
+          [32m+[0m [0m{
+              [32m+[0m [0maccess                                     = "Allow"
+              [32m+[0m [0mdescription                                = ""
+              [32m+[0m [0mdestination_address_prefix                 = "*"
+              [32m+[0m [0mdestination_address_prefixes               = []
+              [32m+[0m [0mdestination_application_security_group_ids = []
+              [32m+[0m [0mdestination_port_range                     = "22"
+              [32m+[0m [0mdestination_port_ranges                    = []
+              [32m+[0m [0mdirection                                  = "Inbound"
+              [32m+[0m [0mname                                       = "SSH"
+              [32m+[0m [0mpriority                                   = 1001
+              [32m+[0m [0mprotocol                                   = "Tcp"
+              [32m+[0m [0msource_address_prefix                      = "*"
+              [32m+[0m [0msource_address_prefixes                    = []
+              [32m+[0m [0msource_application_security_group_ids      = []
+              [32m+[0m [0msource_port_range                          = "*"
+              [32m+[0m [0msource_port_ranges                         = []
+            },
+        ]
+      [32m+[0m [0m[1m[0mtags[0m[0m                = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+    }
+
+[1m  # azurerm_network_security_group.secgroupnfs[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_security_group" "secgroupnfs" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m            = "westeurope"
+      [32m+[0m [0m[1m[0mname[0m[0m                = "sshtraffic"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m = "practica2_rg"
+      [32m+[0m [0m[1m[0msecurity_rule[0m[0m       = [
+          [32m+[0m [0m{
+              [32m+[0m [0maccess                                     = "Allow"
+              [32m+[0m [0mdescription                                = ""
+              [32m+[0m [0mdestination_address_prefix                 = "*"
+              [32m+[0m [0mdestination_address_prefixes               = []
+              [32m+[0m [0mdestination_application_security_group_ids = []
+              [32m+[0m [0mdestination_port_range                     = "22"
+              [32m+[0m [0mdestination_port_ranges                    = []
+              [32m+[0m [0mdirection                                  = "Inbound"
+              [32m+[0m [0mname                                       = "SSH"
+              [32m+[0m [0mpriority                                   = 1001
+              [32m+[0m [0mprotocol                                   = "Tcp"
+              [32m+[0m [0msource_address_prefix                      = "*"
+              [32m+[0m [0msource_address_prefixes                    = []
+              [32m+[0m [0msource_application_security_group_ids      = []
+              [32m+[0m [0msource_port_range                          = "*"
+              [32m+[0m [0msource_port_ranges                         = []
+            },
+        ]
+      [32m+[0m [0m[1m[0mtags[0m[0m                = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+    }
+
+[1m  # azurerm_network_security_group.secgroupworker[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_security_group" "secgroupworker" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m            = "westeurope"
+      [32m+[0m [0m[1m[0mname[0m[0m                = "sshtraffic"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m = "practica2_rg"
+      [32m+[0m [0m[1m[0msecurity_rule[0m[0m       = [
+          [32m+[0m [0m{
+              [32m+[0m [0maccess                                     = "Allow"
+              [32m+[0m [0mdescription                                = ""
+              [32m+[0m [0mdestination_address_prefix                 = "*"
+              [32m+[0m [0mdestination_address_prefixes               = []
+              [32m+[0m [0mdestination_application_security_group_ids = []
+              [32m+[0m [0mdestination_port_range                     = "22"
+              [32m+[0m [0mdestination_port_ranges                    = []
+              [32m+[0m [0mdirection                                  = "Inbound"
+              [32m+[0m [0mname                                       = "SSH"
+              [32m+[0m [0mpriority                                   = 1001
+              [32m+[0m [0mprotocol                                   = "Tcp"
+              [32m+[0m [0msource_address_prefix                      = "*"
+              [32m+[0m [0msource_address_prefixes                    = []
+              [32m+[0m [0msource_application_security_group_ids      = []
+              [32m+[0m [0msource_port_range                          = "*"
+              [32m+[0m [0msource_port_ranges                         = []
+            },
+        ]
+      [32m+[0m [0m[1m[0mtags[0m[0m                = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+    }
+
+[1m  # azurerm_public_ip.ippublicamaster[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_public_ip" "ippublicamaster" {
+      [32m+[0m [0m[1m[0mallocation_method[0m[0m       = "Dynamic"
+      [32m+[0m [0m[1m[0mfqdn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout_in_minutes[0m[0m = 4
+      [32m+[0m [0m[1m[0mip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mip_version[0m[0m              = "IPv4"
+      [32m+[0m [0m[1m[0mlocation[0m[0m                = "westeurope"
+      [32m+[0m [0m[1m[0mname[0m[0m                    = "ippublicamaster"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m     = "practica2_rg"
+      [32m+[0m [0m[1m[0msku[0m[0m                     = "Basic"
+      [32m+[0m [0m[1m[0mtags[0m[0m                    = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+    }
+
+[1m  # azurerm_public_ip.ippublicanfs[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_public_ip" "ippublicanfs" {
+      [32m+[0m [0m[1m[0mallocation_method[0m[0m       = "Dynamic"
+      [32m+[0m [0m[1m[0mfqdn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout_in_minutes[0m[0m = 4
+      [32m+[0m [0m[1m[0mip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mip_version[0m[0m              = "IPv4"
+      [32m+[0m [0m[1m[0mlocation[0m[0m                = "westeurope"
+      [32m+[0m [0m[1m[0mname[0m[0m                    = "ippublicanfs"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m     = "practica2_rg"
+      [32m+[0m [0m[1m[0msku[0m[0m                     = "Basic"
+      [32m+[0m [0m[1m[0mtags[0m[0m                    = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+    }
+
+[1m  # azurerm_public_ip.ippublicaworker[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_public_ip" "ippublicaworker" {
+      [32m+[0m [0m[1m[0mallocation_method[0m[0m       = "Dynamic"
+      [32m+[0m [0m[1m[0mfqdn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout_in_minutes[0m[0m = 4
+      [32m+[0m [0m[1m[0mip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mip_version[0m[0m              = "IPv4"
+      [32m+[0m [0m[1m[0mlocation[0m[0m                = "westeurope"
+      [32m+[0m [0m[1m[0mname[0m[0m                    = "ippublicaworker"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m     = "practica2_rg"
+      [32m+[0m [0m[1m[0msku[0m[0m                     = "Basic"
+      [32m+[0m [0m[1m[0mtags[0m[0m                    = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+    }
+
+[1m  # azurerm_resource_group.rg[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_resource_group" "rg" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m = "westeurope"
+      [32m+[0m [0m[1m[0mname[0m[0m     = "practica2_rg"
+      [32m+[0m [0m[1m[0mtags[0m[0m     = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+    }
+
+[1m  # azurerm_storage_account.unirvictorstorageaccount[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_storage_account" "unirvictorstorageaccount" {
+      [32m+[0m [0m[1m[0maccess_tier[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0maccount_kind[0m[0m                     = "StorageV2"
+      [32m+[0m [0m[1m[0maccount_replication_type[0m[0m         = "LRS"
+      [32m+[0m [0m[1m[0maccount_tier[0m[0m                     = "Standard"
+      [32m+[0m [0m[1m[0mallow_blob_public_access[0m[0m         = false
+      [32m+[0m [0m[1m[0menable_https_traffic_only[0m[0m        = true
+      [32m+[0m [0m[1m[0mid[0m[0m                               = (known after apply)
+      [32m+[0m [0m[1m[0mis_hns_enabled[0m[0m                   = false
+      [32m+[0m [0m[1m[0mlarge_file_share_enabled[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                         = "westeurope"
+      [32m+[0m [0m[1m[0mmin_tls_version[0m[0m                  = "TLS1_0"
+      [32m+[0m [0m[1m[0mname[0m[0m                             = "unirvictorstorageaccount"
+      [32m+[0m [0m[1m[0mprimary_access_key[0m[0m               = (sensitive value)
+      [32m+[0m [0m[1m[0mprimary_blob_connection_string[0m[0m   = (sensitive value)
+      [32m+[0m [0m[1m[0mprimary_blob_endpoint[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_blob_host[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_connection_string[0m[0m        = (sensitive value)
+      [32m+[0m [0m[1m[0mprimary_dfs_endpoint[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_dfs_host[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_file_endpoint[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_file_host[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_location[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_queue_endpoint[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_queue_host[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_table_endpoint[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_table_host[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_web_endpoint[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_web_host[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m              = "practica2_rg"
+      [32m+[0m [0m[1m[0msecondary_access_key[0m[0m             = (sensitive value)
+      [32m+[0m [0m[1m[0msecondary_blob_connection_string[0m[0m = (sensitive value)
+      [32m+[0m [0m[1m[0msecondary_blob_endpoint[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_blob_host[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_connection_string[0m[0m      = (sensitive value)
+      [32m+[0m [0m[1m[0msecondary_dfs_endpoint[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_dfs_host[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_file_endpoint[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_file_host[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_location[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_queue_endpoint[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_queue_host[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_table_endpoint[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_table_host[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_web_endpoint[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_web_host[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                             = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+
+      [32m+[0m [0mblob_properties {
+          [32m+[0m [0mcors_rule {
+              [32m+[0m [0m[1m[0mallowed_headers[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mallowed_methods[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mallowed_origins[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mexposed_headers[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mmax_age_in_seconds[0m[0m = (known after apply)
+            }
+
+          [32m+[0m [0mdelete_retention_policy {
+              [32m+[0m [0m[1m[0mdays[0m[0m = (known after apply)
+            }
+        }
+
+      [32m+[0m [0midentity {
+          [32m+[0m [0m[1m[0mprincipal_id[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mtenant_id[0m[0m    = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m         = (known after apply)
+        }
+
+      [32m+[0m [0mnetwork_rules {
+          [32m+[0m [0m[1m[0mbypass[0m[0m                     = (known after apply)
+          [32m+[0m [0m[1m[0mdefault_action[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0mip_rules[0m[0m                   = (known after apply)
+          [32m+[0m [0m[1m[0mvirtual_network_subnet_ids[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mqueue_properties {
+          [32m+[0m [0mcors_rule {
+              [32m+[0m [0m[1m[0mallowed_headers[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mallowed_methods[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mallowed_origins[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mexposed_headers[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mmax_age_in_seconds[0m[0m = (known after apply)
+            }
+
+          [32m+[0m [0mhour_metrics {
+              [32m+[0m [0m[1m[0menabled[0m[0m               = (known after apply)
+              [32m+[0m [0m[1m[0minclude_apis[0m[0m          = (known after apply)
+              [32m+[0m [0m[1m[0mretention_policy_days[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0mversion[0m[0m               = (known after apply)
+            }
+
+          [32m+[0m [0mlogging {
+              [32m+[0m [0m[1m[0mdelete[0m[0m                = (known after apply)
+              [32m+[0m [0m[1m[0mread[0m[0m                  = (known after apply)
+              [32m+[0m [0m[1m[0mretention_policy_days[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0mversion[0m[0m               = (known after apply)
+              [32m+[0m [0m[1m[0mwrite[0m[0m                 = (known after apply)
+            }
+
+          [32m+[0m [0mminute_metrics {
+              [32m+[0m [0m[1m[0menabled[0m[0m               = (known after apply)
+              [32m+[0m [0m[1m[0minclude_apis[0m[0m          = (known after apply)
+              [32m+[0m [0m[1m[0mretention_policy_days[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0mversion[0m[0m               = (known after apply)
+            }
+        }
+    }
+
+[1m  # azurerm_subnet.misubnet[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_subnet" "misubnet" {
+      [32m+[0m [0m[1m[0maddress_prefix[0m[0m                                 = (known after apply)
+      [32m+[0m [0m[1m[0maddress_prefixes[0m[0m                               = [
+          [32m+[0m [0m"10.0.1.0/24",
+        ]
+      [32m+[0m [0m[1m[0menforce_private_link_endpoint_network_policies[0m[0m = false
+      [32m+[0m [0m[1m[0menforce_private_link_service_network_policies[0m[0m  = false
+      [32m+[0m [0m[1m[0mid[0m[0m                                             = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                                           = "practica2subnet"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m                            = "practica2_rg"
+      [32m+[0m [0m[1m[0mvirtual_network_name[0m[0m                           = "practica2red"
+    }
+
+[1m  # azurerm_virtual_network.mired[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_virtual_network" "mired" {
+      [32m+[0m [0m[1m[0maddress_space[0m[0m         = [
+          [32m+[0m [0m"10.0.0.0/16",
+        ]
+      [32m+[0m [0m[1m[0mguid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m              = "westeurope"
+      [32m+[0m [0m[1m[0mname[0m[0m                  = "practica2red"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m   = "practica2_rg"
+      [32m+[0m [0m[1m[0msubnet[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                  = {
+          [32m+[0m [0m"environment" = "CP2"
+        }
+      [32m+[0m [0m[1m[0mvm_protection_enabled[0m[0m = false
+    }
+
+[0m[1mPlan:[0m 19 to add, 0 to change, 0 to destroy.
+[0m[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
