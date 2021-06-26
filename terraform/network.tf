@@ -10,7 +10,7 @@ resource "azurerm_virtual_network" "mired" {
     }
 }
 
-#Definimos una subred
+#Definimos una subred - test
 
 resource "azurerm_subnet" "misubnet" {
     name                   = "practica2subnet"
