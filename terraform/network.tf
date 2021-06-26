@@ -91,3 +91,41 @@ resource "azurerm_public_ip" "ippublicanfs" {
 
 }
 
+####################################################################
+
+#Creamos network interface card con ip estática para el WORKER
+resource "azurerm_network_interface" "nicworker" {
+  name                = "nicworker"  
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+
+    ip_configuration {
+    name                           = "myipconfiguration1"
+    subnet_id                      = azurerm_subnet.misubnet.id 
+    private_ip_address_allocation  = "Static"
+    private_ip_address             = "10.0.1.12"
+    public_ip_address_id           = azurerm_public_ip.ippublicaworker.id
+  }
+
+    tags = {
+        environment = "CP2"
+    }
+
+}
+
+#Creamos una IP publica para el NFS
+resource "azurerm_public_ip" "ippublicaworker" {
+  name                = "ippublicaworker"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  allocation_method   = "Dynamic"
+  sku                 = "Basic"
+
+    tags = {
+        environment = "CP2"
+    }
+
+}
+
+
+
