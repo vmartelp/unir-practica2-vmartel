@@ -17,6 +17,6 @@ variable "vm_size" {
 variable "vm_size_master" {
   type = string
   description = "Tamaño de la máquina virtual MASTER"
-  default = "B2s" # 4GB, 2 CPU 
+  default = "Standard_B2s" # 4GB, 2 CPU 
 }
 
