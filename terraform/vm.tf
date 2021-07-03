@@ -4,12 +4,12 @@ resource "azurerm_linux_virtual_machine" "kubernetes-master" {
     resource_group_name = azurerm_resource_group.rg.name
     location            = azurerm_resource_group.rg.location
     size                = var.vm_size
-    admin_username      = "adminUsername"
+    admin_username      = "master"
     network_interface_ids = [ azurerm_network_interface.nicmaster.id ]
     disable_password_authentication = true
 
     admin_ssh_key {
-        username   = "adminUsername"
+        username   = "master"
         public_key = file("~/.ssh/id_rsa.pub")
     }
 
@@ -49,12 +49,12 @@ resource "azurerm_linux_virtual_machine" "kubernetes-NFS" {
     resource_group_name = azurerm_resource_group.rg.name
     location            = azurerm_resource_group.rg.location
     size                = var.vm_size
-    admin_username      = "adminUsername"
+    admin_username      = "nfs"
     network_interface_ids = [ azurerm_network_interface.nicnfs.id ]
     disable_password_authentication = true
 
     admin_ssh_key {
-        username   = "adminUsername"
+        username   = "nfs"
         public_key = file("~/.ssh/id_rsa.pub")
     }
 
@@ -94,12 +94,12 @@ resource "azurerm_linux_virtual_machine" "kubernetes-worker" {
     resource_group_name = azurerm_resource_group.rg.name
     location            = azurerm_resource_group.rg.location
     size                = var.vm_size
-    admin_username      = "adminUsername"
+    admin_username      = "worker"
     network_interface_ids = [ azurerm_network_interface.nicworker.id ]
     disable_password_authentication = true
 
     admin_ssh_key {
-        username   = "adminUsername"
+        username   = "worker"
         public_key = file("~/.ssh/id_rsa.pub")
     }
 
