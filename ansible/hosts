@@ -1,0 +1,14 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+[controller]
+10.244.146.58 ansible_connection=local
+
+[master]
+20.93.138.191 ansible_user=master
+
+[nfs]
+20.86.177.105 ansible_user=nfs
+
+[worker]
+20.86.178.220 ansible_user=worker
