@@ -1,0 +1,5 @@
+---
+# tasks file for update-machines
+- name: Actualizando Sistemas Operativos CentOs con permisos de root
+  command: dnf update -y
+  become: yes

@@ -1,0 +1,5 @@
+# Se ejecuta role de actualizar los sistemas operativos de las máquinas
+- name: Ejecutar actualización de los sistemas operativos
+  hosts: master,nfs,worker
+  roles:
+    - update-machines
