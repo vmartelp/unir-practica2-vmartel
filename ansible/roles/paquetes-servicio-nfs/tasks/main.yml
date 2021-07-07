@@ -1,0 +1,8 @@
+---
+# tasks file for paquetes-servicio-nfs
+- name: Instalar paquetes NFS y arrancar servicio
+  shell: |
+    dnf install nfs-utils net-tools -y
+    systemctl  enable nfs-server
+    systemctl start nfs-server     
+  become: yes  

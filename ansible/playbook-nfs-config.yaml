@@ -1,0 +1,6 @@
+# Playbook que crea disco de datos y arranca servicio en NFS
+- name: Crea disco de datos y arranca servicio NFS
+  hosts: nfs
+  roles:
+    - disco-datos-nfs
+    - paquetes-servicio-nfs

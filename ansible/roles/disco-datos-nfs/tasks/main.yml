@@ -1,0 +1,11 @@
+---
+# tasks file for disco-datos-nfs
+ - name: Crear disco datos - Logical Volume - filesystem de tipo XFS
+   shell: |
+     pvcreate /dev/sdb
+     vgcreate data_vg /dev/sdb
+     lvcreate -l+2559 -n nfs_lv /dev/data_vg
+     mkfs.xfs /dev/data_vg/nfs_lv
+     mkdir /srv/nfs
+     echo "/dev/data_vg/nfs_lv        /srv/nfs                xfs     defaults        0 0" >> /etc/fstab
+   become: yes   
