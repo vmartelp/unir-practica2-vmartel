@@ -1,0 +1,12 @@
+---
+# tasks file for tareas-previas
+ - name: Tareas previas de configuración - sincronización horaria - Desactivar SeLinux - Install utilidades
+   shell: |
+     timedatectl set-timezone Europe/Madrid
+     dnf install chrony -y
+     systemctl enable chronyd
+     systemctl start chronyd
+     timedatectl set-ntp true
+     sed -i s/=enforcing/=disabled/g /etc/selinux/config
+     dnf install nfs-utils nfs4-acl-tools wget -y
+   become: yes 

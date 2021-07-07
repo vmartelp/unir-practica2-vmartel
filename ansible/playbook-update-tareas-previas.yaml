@@ -1,0 +1,6 @@
+# # Playbook que ejecuta roles de Actualizar SO maquinas y realizar tareas previas
+- name: Actualizar sistemas operativos y ejecutar tareas previas
+  hosts: master,nfs,worker
+  roles:
+    - update-machines
+    - tareas-previas
