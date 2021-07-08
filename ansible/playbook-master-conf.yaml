@@ -1,0 +1,5 @@
+# # Playbook tareas Master
+- name: Ejecutar tareas en Master
+  hosts: master
+  roles:
+    - conf-kubernetes

@@ -1,0 +1,22 @@
+---
+# tasks file for conf-kubernetes
+- name: Configurar firewall para acceder a los servicios de Kubernetes
+  shell: |
+    firewall-cmd --permanent --add-port=6443/tcp
+    firewall-cmd --permanent --add-port=2379-2380/tcp
+    firewall-cmd --permanent --add-port=10250/tcp
+    firewall-cmd --permanent --add-port=10251/tcp
+    firewall-cmd --permanent --add-port=10252/tcp
+    firewall-cmd --permanent --add-port=10255/tcp
+    firewall-cmd --reload
+  become: yes
+- name: Configurar kubeadm
+  shell: |
+    kubeadm config images pull 
+  become: yes
+- name: Permitir acceso desde los workers
+  shell: |
+    firewall-cmd --permanent --add-rich-rule 'rule family=ipv4 source address=10.0.1.12/24 accept'
+    firewall-cmd --permanent --add-rich-rule 'rule family=ipv4 source address=10.0.1.12/24 accept'
+    firewall-cmd --reload
+  become: yes
