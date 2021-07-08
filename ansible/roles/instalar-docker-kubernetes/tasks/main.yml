@@ -1,0 +1,28 @@
+---
+# tasks file for instalar-docker-kubernetes
+- name: Instalando docker
+  shell: |
+    dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+    dnf install docker-ce-20.10.6-3.el8 -y
+    systemctl enable docker
+    systemctl start docker     
+  become: yes
+- name: Modificando k8s.conf
+  copy:
+     dest: "/etc/yum.repos.d/kubernetes.repo"
+     content: |
+       [kubernetes]
+       name=Kubernetes
+       baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+       enabled=1
+       gpgcheck=1
+       repo_gpgcheck=1
+       gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+       exclude=kubelet kubeadm kubectl
+  become: yes
+- name: Instalando kubernetes
+  shell: |
+    dnf install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+    systemctl enable kubelet
+    systemctl start kubelet         
+  become: yes

@@ -3,4 +3,4 @@
   hosts: master,worker
   roles:
     - conf-master-worker
-     
+    - instalar-docker-kubernetes 
