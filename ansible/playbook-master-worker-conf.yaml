@@ -1,0 +1,6 @@
+# # Playbook tareas configuración en Master y Worker
+- name: Ejecutar tareas comunes en Master y Worker
+  hosts: master,worker
+  roles:
+    - conf-master-worker
+     

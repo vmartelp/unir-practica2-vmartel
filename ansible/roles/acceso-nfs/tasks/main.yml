@@ -1,0 +1,14 @@
+---
+# tasks file for acceso-nfs
+- name: Creando archivo en /etc/exports
+  copy:
+    dest: "/etc/exports"
+    content: |
+      /srv/nfs	10.0.1.10(rw,sync)
+      /srv/nfs	10.0.1.12(rw,sync)
+  become: yes 
+- name: Aplicando configuracion 
+  shell: |
+    exportfs -r      
+    exportfs -s            
+  become: yes

@@ -1,0 +1,22 @@
+---
+# tasks file for conf-master-worker
+- name: Configurar cortafuegos
+  shell: |
+    systemctl enable firewalld
+    systemctl start firewalld
+    modprobe br_netfilter
+    firewall-cmd --add-masquerade --permanent
+    firewall-cmd --reload
+  become: yes
+- name: Modificando k8s.conf
+  copy:
+     dest: "/etc/sysctl.d/k8s.conf"
+     content: |
+       net.bridge.bridge-nf-call-ip6tables = 1
+       net.bridge.bridge-nf-call-iptables = 1
+  become: yes
+- name: Aplicando configuracion k8s - desactivando swap
+  shell: |
+    sysctl --system
+    swapoff  -a
+  become: yes  

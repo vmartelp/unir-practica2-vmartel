@@ -1,0 +1,11 @@
+---
+# tasks file for cortafuegos-nfs
+- name: Abrir puertos del cortafuego de la instancia nfs
+  shell: |
+    systemctl enable firewalld
+    systemctl start firewalld 
+    firewall-cmd --permanent --add-service=nfs
+    firewall-cmd --permanent --add-service=rpc-bind
+    firewall-cmd --permanent --add-service=mountd
+    firewall-cmd --reload  
+  become: yes
