@@ -4,27 +4,49 @@
   copy:
     dest: "jenkins.yaml"
     content: |
-     apiVersion: apps/v1
-     kind: Deployment
-     metadata:
-       name: jenkins
-       labels:
-         app: jenkins
-     spec:
-       replicas: 1
-       selector:
-         matchLabels:
-           app: jenkins
-       template:
-         metadata:
-           labels:
-             app: jenkins
-         spec:
-            containers:
-            - name: jenkins
-              image: jenkins/jenkins:2.289.2-lts-centos7     
-              ports:
-              - containerPort: 8080
+ apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-routed
+  namespace: webapp-routed
+  labels:
+    app: webapp-routed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-routed
+  template:
+    metadata:
+      labels:
+        app: webapp-routed
+    spec:
+      containers:
+      - name: webapp-routed
+        image: quay.io/rhte_2019/webapp:v1
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: webapp-service
+    namespace: webapp-routed
+spec:
+    selector:
+      app: webapp-routed
+    ports:
+    - name: http
+      protocol: TCP
+      port: 80 # puerto en el que escucha el servicio
+      targetPort: 80 # puerto en el que escucha el contenedor
 - name: Desplegando jenkins en kubernetes
   shell: |
     kubectl apply -f jenkins.yaml --validate=false
