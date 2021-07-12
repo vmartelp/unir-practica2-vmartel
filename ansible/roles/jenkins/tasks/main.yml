@@ -22,11 +22,11 @@
          spec:
             containers:
             - name: jenkins
-            image: jenkins/jenkins:2.289.2-lts-centos7     
+              image: jenkins/jenkins:2.289.2-lts-centos7     
             ports:
             - containerPort: 8080
   become: yes 
 - name: Desplegando jenkins en kubernetes
   shell: |
-    kubectl apply -f jenkins.yaml
+    kubectl apply -f jenkins.yaml --validate=false
   become: yes
