@@ -1,0 +1,5 @@
+# Playbook desplegar app en kubernetes
+- name: Desplegando app
+  hosts: master
+  roles:
+    - jenkins
