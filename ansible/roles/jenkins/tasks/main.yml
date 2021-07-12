@@ -26,3 +26,7 @@
             ports:
             - containerPort: 8080
   become: yes 
+- name: Desplegando jenkins en kubernetes
+  shell: |
+  kubectl apply -f jenkins.yaml
+  become: yes
