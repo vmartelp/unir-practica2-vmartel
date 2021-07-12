@@ -35,3 +35,7 @@
     cp -i /etc/kubernetes/admin.conf /root/.kube/config
     chown $(id -u):$(id -g) /root/.kube/config
   become: yes
+- name: Configurar ingress controller
+  shell: |
+  kubectl apply -f https://raw.githubusercontent.com/haproxytech/kubernetes-ingress/v1.5/deploy/haproxy-ingress.yaml
+  become: yes
