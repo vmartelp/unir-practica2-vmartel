@@ -18,7 +18,8 @@
   shell: |
     firewall-cmd --permanent --add-rich-rule 'rule family=ipv4 source address=10.0.1.12/24 accept'
     firewall-cmd --permanent --add-rich-rule 'rule family=ipv4 source address=10.0.1.12/24 accept'
-    firewall-cmd --reload
+    firewall-cmd --zone=public --permanent --add-rich-rule 'rule family=ipv4 source address=172.17.0.0/16 accept'   
+    firewall-cmd --reload    
   become: yes
 - name: Plugin CNI y definimos red de PODS
   shell: |
