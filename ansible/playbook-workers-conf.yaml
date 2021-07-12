@@ -1,0 +1,5 @@
+# Playbook que configura los workers
+- name: Configurando los workers
+  hosts: worker
+  roles:
+    - conf-workers

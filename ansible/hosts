@@ -5,10 +5,10 @@ ansible_python_interpreter=/usr/bin/python3
 localhost ansible_connection=local
 
 [master]
-51.137.100.199 ansible_user=master
+20.86.171.71 ansible_user=master
 
 [nfs]
-20.101.82.152 ansible_user=nfs
+57.178.26.2 ansible_user=nfs
 
 [worker]
-104.46.37.165 ansible_user=worker
+40.91.203.114 ansible_user=worker

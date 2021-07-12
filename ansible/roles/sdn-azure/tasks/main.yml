@@ -1,0 +1,12 @@
+---
+# tasks file for sdn-azure
+- name: Abrimos puertos cortafuegos
+  shell: |
+    firewall-cmd --permanent --add-port=8285/udp
+    firewall-cmd --permanent --add-port=8472/udp    
+    firewall-cmd --reload
+  become: yes
+- name: Descargamos fichero
+  shell: |
+    kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml 
+  become: yes

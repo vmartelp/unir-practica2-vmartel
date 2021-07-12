@@ -1,0 +1,5 @@
+# Playbook instalar sdn
+- name: Instalar sdn
+  hosts: master
+  roles:
+    - sdn-azure

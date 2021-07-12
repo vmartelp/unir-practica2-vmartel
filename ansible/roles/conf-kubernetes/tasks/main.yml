@@ -25,10 +25,12 @@
     kubeadm init --pod-network-cidr 192.169.0.0/16 >> outputkubeadm.txt
     export KUBECONFIG=/etc/kubernetes/admin.conf    
   become: yes
-  - name: Configurar Usuario Master y Root
+- name: Configurar Usuario Master y Root
   shell: |
-    cp -i /etc/kubernetes/admin.conf /root/.kube/config
-    chown $(id -u):$(id -g) /root/.kube/config
+    mkdir -p /master/.kube
     cp -i /etc/kubernetes/admin.conf /master/.kube/config
     chown $(id -u):$(id -g) /master/.kube/config
+    mkdir -p /root/.kube
+    cp -i /etc/kubernetes/admin.conf /root/.kube/config
+    chown $(id -u):$(id -g) /root/.kube/config
   become: yes
