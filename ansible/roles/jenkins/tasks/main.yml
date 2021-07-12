@@ -4,29 +4,6 @@
   copy:
     dest: "jenkins.yaml"
     content: |
-<<<<<<< HEAD
-     apiVersion: apps/v1
-     kind: Deployment
-     metadata:
-       name: jenkins
-       labels:
-         app: jenkins
-     spec:
-       replicas: 1
-       selector:
-         matchLabels:
-           app: jenkins
-       template:
-         metadata:
-           labels:
-             app: jenkins
-         spec:
-            containers:
-            - name: jenkins
-              image: jenkins/jenkins:2.289.2-lts-centos7     
-            ports:
-            - containerPort: 8080
-=======
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -48,7 +25,6 @@ spec:
         image: jenkins/jenkins:2.289.2-lts-centos7     
         ports:
         - containerPort: 8080
->>>>>>> dc6208d844ad2fed655a3fb2c943469acc077ce4
   become: yes 
 - name: Desplegando jenkins en kubernetes
   shell: |
