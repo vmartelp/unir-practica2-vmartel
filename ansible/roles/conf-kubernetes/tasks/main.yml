@@ -20,3 +20,15 @@
     firewall-cmd --permanent --add-rich-rule 'rule family=ipv4 source address=10.0.1.12/24 accept'
     firewall-cmd --reload
   become: yes
+- name: Plugin CNI y definimos red de PODS
+  shell: |
+    kubeadm init --pod-network-cidr 192.169.0.0/16 >> outputkubeadm.txt
+    export KUBECONFIG=/etc/kubernetes/admin.conf    
+  become: yes
+  - name: Configurar Usuario Master y Root
+  shell: |
+    cp -i /etc/kubernetes/admin.conf /root/.kube/config
+    chown $(id -u):$(id -g) /root/.kube/config
+    cp -i /etc/kubernetes/admin.conf /master/.kube/config
+    chown $(id -u):$(id -g) /master/.kube/config
+  become: yes
